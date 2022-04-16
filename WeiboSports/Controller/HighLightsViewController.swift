@@ -4,63 +4,20 @@
 //
 //  Created by 96group on 10/28/21.
 //
-
 import UIKit
-
-class APICaller {
-    
-    var isPaginating = false
-    
-    func fetchData(pagination: Bool=false, completion: @escaping (Result<[String], Error>) -> Void) {
-        if pagination {
-            isPaginating = true
-        }
-        DispatchQueue.global().asyncAfter(deadline: .now() + (pagination ? 3 : 2), execute: {
-            let original = [
-                "apple",
-                "apple",
-                "apple",
-                "apple",
-                "apple","apple","apple",
-                "apple",
-                "apple",
-                "apple","apple",
-                "apple",
-                "apple",
-                "apple",
-                "apple",
-                "apple",
-                "apple","apple",
-                "apple",
-                "apple",
-                "apple",
-                "apple"
-            ]
-            let newData = [
-                "talong",
-                "ni",
-                "caloy"
-            ]
-            completion(.success(pagination ? newData : original))
-            if pagination {
-                self.isPaginating = false
-            }
-        })
-        
-    }
-}
 
 class HighLightsViewController: UIViewController {
     
     private let apiCaller = APICaller()
     
     private let highlightsTableView: UITableView = {
-        let tv = UITableView(frame: .zero, style: .grouped)
-        tv.register(UITableViewCell.self, forCellReuseIdentifier: "highlightsCell")
+        let tv = UITableView()//(frame: .zero, style: .grouped)
+        tv.separatorColor = UIColor.clear
+        tv.register(SoccerVideoCell.self, forCellReuseIdentifier: SoccerVideoCell.identifier)
         return tv
     }()
     
-    private var data = [String]()
+    private var video: [SoccerVideo] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,11 +29,14 @@ class HighLightsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         highlightsTableView.frame = view.bounds
+        
         apiCaller.fetchData(pagination: false, completion: { [weak self] results in
             switch results {
             case .success(let data):
-                self?.data.append(contentsOf: data)
+                self?.video.append(contentsOf: data)
+                print(data)
                 DispatchQueue.main.async {
                     self?.highlightsTableView.reloadData()
                 }
@@ -91,22 +51,26 @@ class HighLightsViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .systemGray
         navigationController?.navigationBar.backgroundColor = hexStringToUIColor(hex: "#f0f5f4")
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 20)!]
-        self.navigationController?.navigationBar.topItem?.title = "Highlights"
+        self.navigationController?.navigationBar.topItem?.title = "Soccer News"
         self.navigationController?.navigationBar.titleTextAttributes = attributes
     }
     
 }
 
+// MARK: - UITableview Delegates
+
 extension HighLightsViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate
 {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = highlightsTableView.dequeueReusableCell(withIdentifier: "highlightsCell", for: indexPath)
+        guard let cell = highlightsTableView.dequeueReusableCell(withIdentifier: SoccerVideoCell.identifier, for: indexPath) as? SoccerVideoCell else {
+            return UITableViewCell()
+        }
+        let newCell = video[indexPath.row]
         
-        cell.textLabel?.text = data[indexPath.row]
+        let backgroundView = UIView()
+        cell.selectedBackgroundView = backgroundView
+        cell.clipsToBounds = true
+        cell.setSoccerVideoCell(video: newCell)
         return cell
     }
     
@@ -134,7 +98,7 @@ extension HighLightsViewController: UITableViewDelegate, UITableViewDataSource, 
                 }
                 switch result {
                 case .success(let moreData):
-                    self?.data.append(contentsOf: moreData)
+                    self?.video.append(contentsOf: moreData)
                     DispatchQueue.main.async {
                         self?.highlightsTableView.reloadData()
                     }
@@ -143,6 +107,20 @@ extension HighLightsViewController: UITableViewDelegate, UITableViewDataSource, 
                 }
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = video[indexPath.row]
+        let videoVC = VideoViewController(item)
+        navigationController?.present(videoVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return video.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
     }
     
     

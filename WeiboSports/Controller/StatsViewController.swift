@@ -6,14 +6,25 @@
 //
 
 import UIKit
+import WebKit
 
-class StatsViewController: UIViewController {
+class StatsViewController: UIViewController, WKNavigationDelegate {
+    
+    var webView: WKWebView!
+    
+    override func loadView() {
+        webView = WKWebView()
+        webView.navigationDelegate = self
+        view = webView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
-        // Do any additional setup after loading the view.
+        
+        let url = URL(string: "https://www.scorebat.com/embed/livescore/")!
+        webView.load(URLRequest(url: url))
+        webView.allowsBackForwardNavigationGestures = true
     }
     
     private func setupView() {
@@ -22,7 +33,7 @@ class StatsViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = hexStringToUIColor(hex: "#f0f5f4")
         navigationController?.navigationBar.tintColor = .systemGray
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 20)!]
-        self.navigationController?.navigationBar.topItem?.title = "Stats"
+        self.navigationController?.navigationBar.topItem?.title = "Horse News"
         self.navigationController?.navigationBar.titleTextAttributes = attributes
     }
 

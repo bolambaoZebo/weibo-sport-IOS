@@ -10,18 +10,18 @@ import UIKit
 
 class SoccerVideoCell: UITableViewCell {
 
-    static let identifier = "homeCell"
+    static let identifier = "videoCell"
     
     private let soccerImage: UIImageView = {
        let soccerImage = UIImageView()
         soccerImage.contentMode = .scaleAspectFill
         soccerImage.clipsToBounds = true
-//        soccerImage.layer.cornerRadius = 5
         return soccerImage
     }()
+    //        soccerImage.layer.cornerRadius = 5
     
     private let titleLabel: UILabel = {
-        let label = ZeeUILabel(withInsets: 8, 8, 8, 8)
+        let label = ZeeUILabel(withInsets: 8, 2, 8, 2)
         label.textColor = .black
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.adjustsFontSizeToFitWidth = true
@@ -32,7 +32,7 @@ class SoccerVideoCell: UITableViewCell {
     private let descriptionLabel: UILabel = {
         let label = ZeeUILabel(withInsets: 8, 8, 8, 8)
         label.textColor = .black
-        label.font = .systemFont(ofSize: 18)
+        label.font = .systemFont(ofSize: 12)
         label.numberOfLines = 10
         label.clipsToBounds = true
         return label
@@ -59,10 +59,10 @@ class SoccerVideoCell: UITableViewCell {
         descriptionLabel.text = nil
     }
     
-    func setSoccerNewCell(news: EnglishData) {
+    func setSoccerVideoCell(video news: SoccerVideo) {
         titleLabel.text = news.title
-        descriptionLabel.text = news.description
-        soccerImage.load(url: URL(string: news.imageUrl)!)
+        descriptionLabel.text = news.date
+        soccerImage.load(url: URL(string: news.thumbnail!)!)
     }
     
     func setImageConstraint() {
@@ -83,8 +83,8 @@ class SoccerVideoCell: UITableViewCell {
     func setDescriptionLabel() {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8).isActive = true
-        descriptionLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+        descriptionLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
         descriptionLabel.widthAnchor.constraint(equalTo: titleLabel.widthAnchor).isActive = true
     }
     

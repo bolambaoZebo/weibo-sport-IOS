@@ -38,9 +38,10 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         
         viewControllers = [
             createNavController(viewController: home, tabImage: homeImage, "Home"),
-            createNavController(viewController: highLights, tabImage: highLightsImage, "Highlights"),
-            createNavController(viewController: stats, tabImage: statsImage, "Stats"),
-            createNavController(viewController: bookMarks, tabImage: bookMarksImage, "Bookmarks")
+            createNavController(viewController: highLights, tabImage: highLightsImage, "Soccer"),
+            createNavController(viewController: stats, tabImage: statsImage, "Horse"),
+            createNavController(viewController: bookMarks, tabImage: bookMarksImage, "LiveScore"),
+            createNavController(viewController: bookMarks, tabImage: bookMarksImage, "Live")
         ]
         
     }

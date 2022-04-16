@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C223605A15CA2CC02893A4EE /* Pods_WeiboSports.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39DA899050DD4D5D8C69CA1F /* Pods_WeiboSports.framework */; };
 		E6611368272CF314009C2E55 /* BaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6611367272CF314009C2E55 /* BaseUrl.swift */; };
 		E661136D272CF60E009C2E55 /* SoccerNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E661136C272CF60E009C2E55 /* SoccerNewsCell.swift */; };
 		E661136F272CFFEC009C2E55 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E661136E272CFFEC009C2E55 /* UIImageViewExtensions.swift */; };
 		E6611373272D206A009C2E55 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6611372272D206A009C2E55 /* UILabelExtension.swift */; };
 		E6611375272D2404009C2E55 /* SoccerVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6611374272D2404009C2E55 /* SoccerVideoCell.swift */; };
+		E66302022748DE1800BE0C95 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66302012748DE1800BE0C95 /* VideoViewController.swift */; };
+		E66302052748E04800BE0C95 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66302042748E04800BE0C95 /* BaseViewController.swift */; };
+		E6674E382744D4FA006236C8 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6674E372744D4FA006236C8 /* NewsViewController.swift */; };
+		E6674E3A2745035C006236C8 /* HomeTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6674E392745035B006236C8 /* HomeTableViewHeader.swift */; };
+		E67DB10027463651009BFF27 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DB0FF27463651009BFF27 /* ColorExtension.swift */; };
 		E680E3D7272A8A940076AA16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680E3D6272A8A940076AA16 /* AppDelegate.swift */; };
 		E680E3D9272A8A940076AA16 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680E3D8272A8A940076AA16 /* SceneDelegate.swift */; };
 		E680E3DB272A8A940076AA16 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680E3DA272A8A940076AA16 /* MainTabViewController.swift */; };
@@ -28,14 +34,26 @@
 		E680E401272AB4C10076AA16 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680E400272AB4C10076AA16 /* Service.swift */; };
 		E680E404272AB4EB0076AA16 /* SoccerVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680E403272AB4EB0076AA16 /* SoccerVideo.swift */; };
 		E680E406272AB4FB0076AA16 /* SoccerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680E405272AB4FB0076AA16 /* SoccerNew.swift */; };
+		E6868C0627425899006B571C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6868C0527425899006B571C /* API.swift */; };
+		E6BD9934280950CD00AB7249 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BD9933280950CD00AB7249 /* String+Extension.swift */; };
+		E6BD9936280953F000AB7249 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BD9935280953F000AB7249 /* Date+Extension.swift */; };
+		E6BD993A28095CE300AB7249 /* ReusableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BD993928095CE300AB7249 /* ReusableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04B25EDFA334F22CAF79C600 /* Pods-WeiboSports.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeiboSports.debug.xcconfig"; path = "Target Support Files/Pods-WeiboSports/Pods-WeiboSports.debug.xcconfig"; sourceTree = "<group>"; };
+		39DA899050DD4D5D8C69CA1F /* Pods_WeiboSports.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeiboSports.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5975222CAB4216BAD3EBCF16 /* Pods-WeiboSports.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeiboSports.release.xcconfig"; path = "Target Support Files/Pods-WeiboSports/Pods-WeiboSports.release.xcconfig"; sourceTree = "<group>"; };
 		E6611367272CF314009C2E55 /* BaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUrl.swift; sourceTree = "<group>"; };
 		E661136C272CF60E009C2E55 /* SoccerNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerNewsCell.swift; sourceTree = "<group>"; };
 		E661136E272CFFEC009C2E55 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		E6611372272D206A009C2E55 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		E6611374272D2404009C2E55 /* SoccerVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerVideoCell.swift; sourceTree = "<group>"; };
+		E66302012748DE1800BE0C95 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		E66302042748E04800BE0C95 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		E6674E372744D4FA006236C8 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		E6674E392745035B006236C8 /* HomeTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewHeader.swift; sourceTree = "<group>"; };
+		E67DB0FF27463651009BFF27 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		E680E3D3272A8A940076AA16 /* WeiboSports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiboSports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E680E3D6272A8A940076AA16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E680E3D8272A8A940076AA16 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +72,10 @@
 		E680E400272AB4C10076AA16 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		E680E403272AB4EB0076AA16 /* SoccerVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerVideo.swift; sourceTree = "<group>"; };
 		E680E405272AB4FB0076AA16 /* SoccerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerNew.swift; sourceTree = "<group>"; };
+		E6868C0527425899006B571C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		E6BD9933280950CD00AB7249 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		E6BD9935280953F000AB7249 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		E6BD993928095CE300AB7249 /* ReusableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,15 +83,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C223605A15CA2CC02893A4EE /* Pods_WeiboSports.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E70731E2376C69A4370A9DA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				04B25EDFA334F22CAF79C600 /* Pods-WeiboSports.debug.xcconfig */,
+				5975222CAB4216BAD3EBCF16 /* Pods-WeiboSports.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		90AF0EF75999F674B656303F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				39DA899050DD4D5D8C69CA1F /* Pods_WeiboSports.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E6611366272CF2EC009C2E55 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				E6868C0527425899006B571C /* API.swift */,
 				E6611367272CF314009C2E55 /* BaseUrl.swift */,
 			);
 			path = Constants;
@@ -80,8 +122,17 @@
 			children = (
 				E661136C272CF60E009C2E55 /* SoccerNewsCell.swift */,
 				E6611374272D2404009C2E55 /* SoccerVideoCell.swift */,
+				E6674E392745035B006236C8 /* HomeTableViewHeader.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E66302032748DFD400BE0C95 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E66302042748E04800BE0C95 /* BaseViewController.swift */,
+			);
+			path = BaseViewController;
 			sourceTree = "<group>";
 		};
 		E680E3CA272A8A940076AA16 = {
@@ -89,6 +140,8 @@
 			children = (
 				E680E3D5272A8A940076AA16 /* WeiboSports */,
 				E680E3D4272A8A940076AA16 /* Products */,
+				6E70731E2376C69A4370A9DA /* Pods */,
+				90AF0EF75999F674B656303F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +181,9 @@
 				E680E3F2272A90C10076AA16 /* HighLightsViewController.swift */,
 				E680E3F4272A90D70076AA16 /* StatsViewController.swift */,
 				E680E3F6272A90ED0076AA16 /* BookMarksViewController.swift */,
+				E6674E372744D4FA006236C8 /* NewsViewController.swift */,
+				E66302012748DE1800BE0C95 /* VideoViewController.swift */,
+				E6BD993928095CE300AB7249 /* ReusableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -135,10 +191,14 @@
 		E680E3F8272A9AEF0076AA16 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E66302032748DFD400BE0C95 /* BaseViewController */,
 				E680E3F9272A9B290076AA16 /* Extension.swift */,
 				E680E3FB272AA16C0076AA16 /* UIViewControllerExtensions.swift */,
 				E661136E272CFFEC009C2E55 /* UIImageViewExtensions.swift */,
 				E6611372272D206A009C2E55 /* UILabelExtension.swift */,
+				E67DB0FF27463651009BFF27 /* ColorExtension.swift */,
+				E6BD9933280950CD00AB7249 /* String+Extension.swift */,
+				E6BD9935280953F000AB7249 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -167,9 +227,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E680E3EA272A8A960076AA16 /* Build configuration list for PBXNativeTarget "WeiboSports" */;
 			buildPhases = (
+				796A2BA08F7C9B4F153A3208 /* [CP] Check Pods Manifest.lock */,
 				E680E3CF272A8A940076AA16 /* Sources */,
 				E680E3D0272A8A940076AA16 /* Frameworks */,
 				E680E3D1272A8A940076AA16 /* Resources */,
+				CC3F4E2E2DBE70C3A68A2BDC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -226,26 +288,77 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		796A2BA08F7C9B4F153A3208 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeiboSports-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC3F4E2E2DBE70C3A68A2BDC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WeiboSports/Pods-WeiboSports-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WeiboSports/Pods-WeiboSports-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeiboSports/Pods-WeiboSports-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E680E3CF272A8A940076AA16 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E680E3FA272A9B290076AA16 /* Extension.swift in Sources */,
+				E6868C0627425899006B571C /* API.swift in Sources */,
 				E680E3F7272A90EE0076AA16 /* BookMarksViewController.swift in Sources */,
+				E6674E382744D4FA006236C8 /* NewsViewController.swift in Sources */,
 				E6611373272D206A009C2E55 /* UILabelExtension.swift in Sources */,
+				E66302052748E04800BE0C95 /* BaseViewController.swift in Sources */,
 				E661136F272CFFEC009C2E55 /* UIImageViewExtensions.swift in Sources */,
 				E6611375272D2404009C2E55 /* SoccerVideoCell.swift in Sources */,
+				E6BD9934280950CD00AB7249 /* String+Extension.swift in Sources */,
 				E680E3FC272AA16C0076AA16 /* UIViewControllerExtensions.swift in Sources */,
+				E6BD993A28095CE300AB7249 /* ReusableViewController.swift in Sources */,
 				E680E404272AB4EB0076AA16 /* SoccerVideo.swift in Sources */,
+				E67DB10027463651009BFF27 /* ColorExtension.swift in Sources */,
 				E680E3EF272A8B600076AA16 /* HomeViewController.swift in Sources */,
 				E6611368272CF314009C2E55 /* BaseUrl.swift in Sources */,
 				E680E401272AB4C10076AA16 /* Service.swift in Sources */,
+				E6BD9936280953F000AB7249 /* Date+Extension.swift in Sources */,
 				E680E3DB272A8A940076AA16 /* MainTabViewController.swift in Sources */,
 				E680E3E1272A8A940076AA16 /* WeiboSports.xcdatamodeld in Sources */,
 				E680E3D7272A8A940076AA16 /* AppDelegate.swift in Sources */,
 				E680E3F5272A90D70076AA16 /* StatsViewController.swift in Sources */,
 				E680E3D9272A8A940076AA16 /* SceneDelegate.swift in Sources */,
+				E66302022748DE1800BE0C95 /* VideoViewController.swift in Sources */,
+				E6674E3A2745035C006236C8 /* HomeTableViewHeader.swift in Sources */,
 				E680E3F3272A90C10076AA16 /* HighLightsViewController.swift in Sources */,
 				E661136D272CF60E009C2E55 /* SoccerNewsCell.swift in Sources */,
 				E680E406272AB4FB0076AA16 /* SoccerNew.swift in Sources */,
@@ -384,11 +497,13 @@
 		};
 		E680E3EB272A8A960076AA16 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04B25EDFA334F22CAF79C600 /* Pods-WeiboSports.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LMCC57R49Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeiboSports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -398,7 +513,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -414,11 +529,13 @@
 		};
 		E680E3EC272A8A960076AA16 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5975222CAB4216BAD3EBCF16 /* Pods-WeiboSports.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LMCC57R49Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeiboSports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -428,7 +545,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

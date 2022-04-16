@@ -23,8 +23,22 @@ struct ChineseData: Codable {
     let teamLeague: String
     let language: String
 }
+//struct News: Codable {
+//    let isActive: Bool
+//    let en: [EnglishData]
+//    let zh: [ChineseData]
+//}
+
+struct NewData: Codable {
+    let id: Int
+    let imageUrl: String
+    let title: String
+    let description: String
+    let category: [Int]
+    let date: String
+}
+
 struct News: Codable {
     let isActive: Bool
-    let en: [EnglishData]
-    let zh: [ChineseData]
+    let data: [NewData]
 }

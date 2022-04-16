@@ -8,6 +8,7 @@
 import Foundation
 
 struct BaseUrl {
-    static let soccerNewsUrl = URL(string: "https://sleepy-turing-6de1dd.netlify.app/.netlify/functions/api")
+//    static let soccerNewsUrl = URL(string: "https://sleepy-turing-6de1dd.netlify.app/.netlify/functions/api")
+    static let soccerNewsUrl = URL(string: "https://sleepy-turing-6de1dd.netlify.app/.netlify/functions/api/weiboSports/")
     static let horseNewsUrl = URL(string: "https://sleepy-turing-6de1dd.netlify.app/.netlify/functions/api/horse-news")
 }
