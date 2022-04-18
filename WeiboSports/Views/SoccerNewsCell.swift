@@ -13,6 +13,7 @@ class SoccerNewsCell: UITableViewCell {
 
     static let identifier = "homeCell"
     
+    var isSoccer: Bool = true
     var buttomStackView = UIStackView()
     
     let singleTap = UITapGestureRecognizer(target: self, action: "")
@@ -30,7 +31,7 @@ class SoccerNewsCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = ZeeUILabel(withInsets: 8, 8, 8, 8)
 //        label.textColor = .black
-        label.font = .systemFont(ofSize: 22, weight: .bold)
+        label.font = .systemFont(ofSize: 18, weight: .semibold)
         label.adjustsFontSizeToFitWidth = true
         label.clipsToBounds = true
         label.numberOfLines = 2
@@ -38,28 +39,43 @@ class SoccerNewsCell: UITableViewCell {
     }()
     
     private let descriptionLabel: UILabel = {
-        let label = ZeeUILabel(withInsets: 2, 8, 8, 2)
+        let label = ZeeUILabel(withInsets: 2, 16, 8, 2)
         label.textColor = .black
-        label.font = .systemFont(ofSize: 12)
+        label.font = .systemFont(ofSize: 16, weight: .thin)
         label.numberOfLines = 12
         label.clipsToBounds = true
 //        label.backgroundColor = .white
         return label
     }()
     
-    let bookmarkButton: UIButton = {
-        let btn = UIButton()
-        return btn
+    let bookmarkButton: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        return image
     }()
 
-    let likeButton: UIButton = {
-        let btn = UIButton()
-        return btn
+    let likeButton: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        return image
     }()
     
-    let commentButton: UIButton = {
-        let btn = UIButton()
-        return btn
+    let commentButton: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
+    let btn4: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
+    let btn5: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        return image
     }()
     
     private let stackView: UIStackView = {
@@ -70,7 +86,6 @@ class SoccerNewsCell: UITableViewCell {
         stackView.alignment = .top
         stackView.distribution = .fillEqually
         stackView.spacing = 12
-
         return stackView
     }()
     
@@ -85,6 +100,8 @@ class SoccerNewsCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4))
         setImageConstraint()
         setTitleLabel()
         setDescriptionLabel()
@@ -100,14 +117,14 @@ class SoccerNewsCell: UITableViewCell {
     
     func setSoccerNewCell(news: NewData) {
         titleLabel.text = news.title
-        descriptionLabel.text = news.date//news.description.htmlAttributedString()
+        descriptionLabel.text = convertDateFormat(inputDate: news.date)//news.description.htmlAttributedString()
         soccerImage.load(url: URL(string: news.imageUrl)!)
     }
     
     func setImageConstraint() {
         soccerImage.translatesAutoresizingMaskIntoConstraints = false
         soccerImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        soccerImage.topAnchor.constraint(equalTo: topAnchor,constant: 20).isActive = true
+        soccerImage.topAnchor.constraint(equalTo: topAnchor,constant: 0).isActive = true
         soccerImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         soccerImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         soccerImage.heightAnchor.constraint(equalToConstant: contentView.frame.size.height - (titleLabel.frame.size.height + descriptionLabel.frame.size.height + stackView.frame.size.height)).isActive = true
@@ -129,25 +146,38 @@ class SoccerNewsCell: UITableViewCell {
         descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0).isActive = true
-        descriptionLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        descriptionLabel.heightAnchor.constraint(equalToConstant: 28).isActive = true
         descriptionLabel.widthAnchor.constraint(equalTo: titleLabel.widthAnchor).isActive = true
     }
     
     func setButtomStackView(){
- 
-        bookmarkButton.setImage(UIImage(systemName: "bookmark.circle"), for: .normal)
-        likeButton.setImage(UIImage(systemName: "bookmark.circle"), for: .normal)
-        commentButton.setImage(UIImage(systemName: "bookmark.circle"), for: .normal)
+        
+        if(isSoccer){
+            bookmarkButton.image = UIImage(named: "epl")
+            likeButton.image = UIImage(named: "laliga")
+            commentButton.image = UIImage(named: "seriea")
+            btn4.image = UIImage(named: "bundesliga")
+            btn5.image = UIImage(named: "ligue1A")
+        }else {
+            bookmarkButton.image = UIImage(named: "hk")
+            likeButton.image = UIImage(named: "lumba")
+            commentButton.image = UIImage(named: "penang")
+            btn4.image = UIImage(named: "macau")
+            btn5.image = UIImage(named: "sg")
+        }
         
         stackView.addArrangedSubview(bookmarkButton)
         stackView.addArrangedSubview(likeButton)
         stackView.addArrangedSubview(commentButton)
+        stackView.addArrangedSubview(btn4)
+        stackView.addArrangedSubview(btn5)
+        
         self.contentView.addSubview(stackView)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        stackView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        stackView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        stackView.widthAnchor.constraint(equalToConstant: contentView.frame.size.width / 1.5).isActive = true
         stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
     }
     
@@ -165,6 +195,19 @@ class SoccerNewsCell: UITableViewCell {
         
     }
     
+    func convertDateFormat(inputDate: String) -> String {
+
+         let olDateFormatter = DateFormatter()
+         olDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+
+         let oldDate = olDateFormatter.date(from: inputDate)
+
+         let convertDateFormatter = DateFormatter()
+         convertDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+
+         return convertDateFormatter.string(from: oldDate!)
+    }
+
 //    (format: "EEEE, MMM d, yyyy", timeZone: (TimeZone(abbreviation: "UTC") ?? TimeZone.current))
 }
 

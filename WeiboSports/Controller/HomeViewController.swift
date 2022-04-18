@@ -14,6 +14,7 @@ class HomeViewController: UIViewController ,UINavigationControllerDelegate {
     private let homeTableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.separatorColor = UIColor.clear
+        table.showsVerticalScrollIndicator = false
         table.register(SoccerNewsCell.self, forCellReuseIdentifier: SoccerNewsCell.identifier)
         table.register(TableHeader.self, forHeaderFooterViewReuseIdentifier: "header")
         return table
@@ -50,43 +51,57 @@ class HomeViewController: UIViewController ,UINavigationControllerDelegate {
 //        present(navController, animated: true)
 //    }
     
-    @objc fileprivate func switchLanguage() {
-        print("change language")
-    }
     
+    @objc fileprivate func returnOrigin() {
+            self.scrollToTop()
+    }
 }
 
  // MARK: - Extension
 
 extension HomeViewController {
+    
+    private func scrollToTop() {
+        let topRow = IndexPath(row: 0,section: 0)
+                               
+        self.homeTableView.scrollToRow(at: topRow,
+                                   at: .top,
+                                   animated: true)
+    }
+    
     func fetch() {
-        URLSession.shared.request(
-            url: BaseUrl.soccerNewsUrl,
-            expecting: News.self)
-        { [weak self] result in
-            switch result {
-            case .success(let news):
+        
+        self.showSpinner()
 
-                DispatchQueue.main.async {
-                    self?.news = news.data
-//                    for item in news.data {
-////                        if(item.category[0] == 5 ){
-//////                            self?.news.append(item)
-////
-////                            print(item)
-////                        }
-//                        
-//                        print(item.category[0])
-//                    }
-                    print("done")
-                    self?.isActive = news.isActive
-                    self?.homeTableView.reloadData()
-                }
-                
-            case .failure(let error):
-                print(error)
-            }
+        switch(Locale.current.languageCode!){
+            case "en":
+                switchBaseUrl(baseUrl: BaseUrl.allNewsUrl)
+            case "zh":
+                switchBaseUrl(baseUrl: BaseUrl.horseNewsUrl)
+            default:
+                print("none")
         }
+    }
+    
+    func switchBaseUrl(baseUrl: URL!){
+            URLSession.shared.request(
+                url: baseUrl,
+                expecting: News.self)
+            { [weak self] result in
+                switch result {
+                case .success(let news):
+
+                    DispatchQueue.main.async {
+                        self?.news = news.data
+                        self?.isActive = news.isActive
+                        self?.removeSpinner()
+                        self?.homeTableView.reloadData()
+                    }
+
+                case .failure(let error):
+                    print(error)
+                }
+            }
     }
 }
 
@@ -97,14 +112,14 @@ extension HomeViewController {
 extension HomeViewController {
     private func setupView() {
         
-        configureNavigationBar(largeTitleColor: .white, backgoundColor: hexStringToUIColor(hex: "#6e25bc"), tintColor: .white, title: "Weibo Sports", preferredLargeTitle: false)
+        configureNavigationBar(largeTitleColor: .white, backgoundColor: hexStringToUIColor(hex: "#6e25bc"), tintColor: .white, title: NSLocalizedString("weibo_sports", comment: "nav home title"), preferredLargeTitle: false)
         
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 32)!]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         
         let buttonLanguage = UIButton.init(type: .custom)
-        buttonLanguage.setImage(UIImage(systemName: "gear"), for: .normal)
-        buttonLanguage.addTarget(self, action: #selector(switchLanguage), for: .touchUpInside)
+        buttonLanguage.setImage(UIImage(systemName: "arrow.up.square"), for: .normal)
+        buttonLanguage.addTarget(self, action: #selector(returnOrigin), for: .touchUpInside)
         
         let rightBarButton = UIBarButtonItem(customView: buttonLanguage)
         self.navigationItem.rightBarButtonItem = rightBarButton
@@ -125,6 +140,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let newsCell = news[indexPath.row]
+        
+        if(newsCell.category[0] != 4){
+            cell.isSoccer = true
+        }else {
+            cell.isSoccer = false
+        }
         let backgroundView = UIView()
         cell.selectedBackgroundView = backgroundView
         cell.clipsToBounds = true
@@ -132,15 +153,15 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    private func createSpinnerHeader() -> UIView {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
-        let imageSlider = UIImageView()
-        imageSlider.contentMode = .scaleAspectFill
-        headerView.addSubview(imageSlider)
-        imageSlider.load(url: URL(string: "https://96group.s3.ap-southeast-1.amazonaws.com/a_horse.png")!)
-        
-        return headerView
-    }
+//    private func createSpinnerHeader() -> UIView {
+//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+//        let imageSlider = UIImageView()
+//        imageSlider.contentMode = .scaleAspectFill
+//        headerView.addSubview(imageSlider)
+//        imageSlider.load(url: URL(string: "https://96group.s3.ap-southeast-1.amazonaws.com/a_horse.png")!)
+//        
+//        return headerView
+//    }
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let item = news[indexPath.row]

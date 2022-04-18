@@ -27,21 +27,23 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         
         let home = HomeViewController()
-        let highLights = HighLightsViewController()
+        let soccer = SoccerViewController()
+        let horse = HorseViewController()
         let stats = StatsViewController()
-        let bookMarks = BookMarksViewController()
+        let LiveGame = BookMarksViewController()
         
         let homeImage = UIImage(systemName: "house.fill")
-        let highLightsImage = UIImage(systemName: "flame.fill")
-        let statsImage = UIImage(systemName: "chart.bar.doc.horizontal.fill")
-        let bookMarksImage = UIImage(systemName: "book.fill")
+        let soccerImage = UIImage(named: "soccer24")
+        let horseImage = UIImage(named: "horse24")
+        let statsImage = UIImage(named: "scoreboard24")
+        let liveGameImage = UIImage(named: "live24")
         
         viewControllers = [
-            createNavController(viewController: home, tabImage: homeImage, "Home"),
-            createNavController(viewController: highLights, tabImage: highLightsImage, "Soccer"),
-            createNavController(viewController: stats, tabImage: statsImage, "Horse"),
-            createNavController(viewController: bookMarks, tabImage: bookMarksImage, "LiveScore"),
-            createNavController(viewController: bookMarks, tabImage: bookMarksImage, "Live")
+            createNavController(viewController: home, tabImage: homeImage,  NSLocalizedString("home_tab_txt", comment: "nav home title")),
+            createNavController(viewController: soccer, tabImage: soccerImage, NSLocalizedString("soccer_txt", comment: "nav soccer title")),
+            createNavController(viewController: horse, tabImage: horseImage, NSLocalizedString("horse_txt", comment: "nav horse title")),
+            createNavController(viewController: stats, tabImage: statsImage, NSLocalizedString("live_score_txt", comment: "nav live score title")),
+            createNavController(viewController: LiveGame, tabImage: liveGameImage, NSLocalizedString("live_stream_txt", comment: "nav live stream title"))
         ]
         
     }

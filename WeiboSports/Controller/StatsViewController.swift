@@ -8,9 +8,14 @@
 import UIKit
 import WebKit
 
+//https://www.nowgoal.pro
+
 class StatsViewController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
+    
+    private var news: [NewData] = []
+    private var isActive: Bool = false
     
     override func loadView() {
         webView = WKWebView()
@@ -33,8 +38,33 @@ class StatsViewController: UIViewController, WKNavigationDelegate {
         navigationController?.navigationBar.backgroundColor = hexStringToUIColor(hex: "#f0f5f4")
         navigationController?.navigationBar.tintColor = .systemGray
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 20)!]
-        self.navigationController?.navigationBar.topItem?.title = "Horse News"
+        self.navigationController?.navigationBar.topItem?.title = NSLocalizedString("live_score_txt", comment: "nav live score title")
         self.navigationController?.navigationBar.titleTextAttributes = attributes
     }
 
+}
+    //MARK: - API CALL
+
+extension StatsViewController {
+    func fetch() {
+        self.showSpinner()
+        URLSession.shared.request(
+            url: BaseUrl.allNewsUrl,
+            expecting: News.self)
+        { [weak self] result in
+            switch result {
+            case .success(let news):
+
+                DispatchQueue.main.async {
+                    self?.news = news.data
+                    self?.isActive = news.isActive
+                    self?.removeSpinner()
+//                    self?.homeTableView.reloadData()
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

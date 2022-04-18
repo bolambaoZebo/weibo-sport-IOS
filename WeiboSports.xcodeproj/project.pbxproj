@@ -17,6 +17,8 @@
 		E66302052748E04800BE0C95 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66302042748E04800BE0C95 /* BaseViewController.swift */; };
 		E6674E382744D4FA006236C8 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6674E372744D4FA006236C8 /* NewsViewController.swift */; };
 		E6674E3A2745035C006236C8 /* HomeTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6674E392745035B006236C8 /* HomeTableViewHeader.swift */; };
+		E67404FF280D469F00B4EF17 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E6740501280D469F00B4EF17 /* Localizable.strings */; };
+		E6740509280D506500B4EF17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E674050B280D506500B4EF17 /* InfoPlist.strings */; };
 		E67DB10027463651009BFF27 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DB0FF27463651009BFF27 /* ColorExtension.swift */; };
 		E680E3D7272A8A940076AA16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680E3D6272A8A940076AA16 /* AppDelegate.swift */; };
 		E680E3D9272A8A940076AA16 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680E3D8272A8A940076AA16 /* SceneDelegate.swift */; };
@@ -35,6 +37,10 @@
 		E680E404272AB4EB0076AA16 /* SoccerVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680E403272AB4EB0076AA16 /* SoccerVideo.swift */; };
 		E680E406272AB4FB0076AA16 /* SoccerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = E680E405272AB4FB0076AA16 /* SoccerNew.swift */; };
 		E6868C0627425899006B571C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6868C0527425899006B571C /* API.swift */; };
+		E6A9229A280A801700C79D79 /* SoccerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A92299280A801700C79D79 /* SoccerViewController.swift */; };
+		E6A9229C280A802500C79D79 /* HorseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A9229B280A802500C79D79 /* HorseViewController.swift */; };
+		E6A9229E280AA7CE00C79D79 /* NSAttribureString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A9229D280AA7CE00C79D79 /* NSAttribureString+Extension.swift */; };
+		E6B940DC280D0AC900B8F89B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B940DB280D0AC900B8F89B /* UIViewController+Extension.swift */; };
 		E6BD9934280950CD00AB7249 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BD9933280950CD00AB7249 /* String+Extension.swift */; };
 		E6BD9936280953F000AB7249 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BD9935280953F000AB7249 /* Date+Extension.swift */; };
 		E6BD993A28095CE300AB7249 /* ReusableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BD993928095CE300AB7249 /* ReusableViewController.swift */; };
@@ -53,6 +59,14 @@
 		E66302042748E04800BE0C95 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E6674E372744D4FA006236C8 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		E6674E392745035B006236C8 /* HomeTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewHeader.swift; sourceTree = "<group>"; };
+		E6740500280D469F00B4EF17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E6740502280D46C700B4EF17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E6740505280D495C00B4EF17 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E6740506280D496300B4EF17 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E674050A280D506500B4EF17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E674050C280D506900B4EF17 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		E674050D280D506D00B4EF17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		E674050E280D506F00B4EF17 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E67DB0FF27463651009BFF27 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		E680E3D3272A8A940076AA16 /* WeiboSports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiboSports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E680E3D6272A8A940076AA16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +87,10 @@
 		E680E403272AB4EB0076AA16 /* SoccerVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerVideo.swift; sourceTree = "<group>"; };
 		E680E405272AB4FB0076AA16 /* SoccerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerNew.swift; sourceTree = "<group>"; };
 		E6868C0527425899006B571C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		E6A92299280A801700C79D79 /* SoccerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerViewController.swift; sourceTree = "<group>"; };
+		E6A9229B280A802500C79D79 /* HorseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorseViewController.swift; sourceTree = "<group>"; };
+		E6A9229D280AA7CE00C79D79 /* NSAttribureString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttribureString+Extension.swift"; sourceTree = "<group>"; };
+		E6B940DB280D0AC900B8F89B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		E6BD9933280950CD00AB7249 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		E6BD9935280953F000AB7249 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		E6BD993928095CE300AB7249 /* ReusableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewController.swift; sourceTree = "<group>"; };
@@ -96,7 +114,6 @@
 				04B25EDFA334F22CAF79C600 /* Pods-WeiboSports.debug.xcconfig */,
 				5975222CAB4216BAD3EBCF16 /* Pods-WeiboSports.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -156,6 +173,7 @@
 		E680E3D5272A8A940076AA16 /* WeiboSports */ = {
 			isa = PBXGroup;
 			children = (
+				E6B940E0280D40B600B8F89B /* Localization */,
 				E6611369272CF5B3009C2E55 /* Views */,
 				E6611366272CF2EC009C2E55 /* Constants */,
 				E680E402272AB4C70076AA16 /* Models */,
@@ -184,6 +202,8 @@
 				E6674E372744D4FA006236C8 /* NewsViewController.swift */,
 				E66302012748DE1800BE0C95 /* VideoViewController.swift */,
 				E6BD993928095CE300AB7249 /* ReusableViewController.swift */,
+				E6A92299280A801700C79D79 /* SoccerViewController.swift */,
+				E6A9229B280A802500C79D79 /* HorseViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -199,6 +219,8 @@
 				E67DB0FF27463651009BFF27 /* ColorExtension.swift */,
 				E6BD9933280950CD00AB7249 /* String+Extension.swift */,
 				E6BD9935280953F000AB7249 /* Date+Extension.swift */,
+				E6A9229D280AA7CE00C79D79 /* NSAttribureString+Extension.swift */,
+				E6B940DB280D0AC900B8F89B /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -218,6 +240,15 @@
 				E680E405272AB4FB0076AA16 /* SoccerNew.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E6B940E0280D40B600B8F89B /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				E6740501280D469F00B4EF17 /* Localizable.strings */,
+				E674050B280D506500B4EF17 /* InfoPlist.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +295,9 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-HK",
+				"zh-Hant",
 			);
 			mainGroup = E680E3CA272A8A940076AA16;
 			productRefGroup = E680E3D4272A8A940076AA16 /* Products */;
@@ -281,8 +315,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E680E3F1272A8FDE0076AA16 /* Main.storyboard in Resources */,
+				E67404FF280D469F00B4EF17 /* Localizable.strings in Resources */,
 				E680E3E6272A8A960076AA16 /* LaunchScreen.storyboard in Resources */,
 				E680E3E3272A8A960076AA16 /* Assets.xcassets in Resources */,
+				E6740509280D506500B4EF17 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,11 +376,13 @@
 				E680E3F7272A90EE0076AA16 /* BookMarksViewController.swift in Sources */,
 				E6674E382744D4FA006236C8 /* NewsViewController.swift in Sources */,
 				E6611373272D206A009C2E55 /* UILabelExtension.swift in Sources */,
+				E6A9229C280A802500C79D79 /* HorseViewController.swift in Sources */,
 				E66302052748E04800BE0C95 /* BaseViewController.swift in Sources */,
 				E661136F272CFFEC009C2E55 /* UIImageViewExtensions.swift in Sources */,
 				E6611375272D2404009C2E55 /* SoccerVideoCell.swift in Sources */,
 				E6BD9934280950CD00AB7249 /* String+Extension.swift in Sources */,
 				E680E3FC272AA16C0076AA16 /* UIViewControllerExtensions.swift in Sources */,
+				E6B940DC280D0AC900B8F89B /* UIViewController+Extension.swift in Sources */,
 				E6BD993A28095CE300AB7249 /* ReusableViewController.swift in Sources */,
 				E680E404272AB4EB0076AA16 /* SoccerVideo.swift in Sources */,
 				E67DB10027463651009BFF27 /* ColorExtension.swift in Sources */,
@@ -356,18 +394,42 @@
 				E680E3E1272A8A940076AA16 /* WeiboSports.xcdatamodeld in Sources */,
 				E680E3D7272A8A940076AA16 /* AppDelegate.swift in Sources */,
 				E680E3F5272A90D70076AA16 /* StatsViewController.swift in Sources */,
+				E6A9229E280AA7CE00C79D79 /* NSAttribureString+Extension.swift in Sources */,
 				E680E3D9272A8A940076AA16 /* SceneDelegate.swift in Sources */,
 				E66302022748DE1800BE0C95 /* VideoViewController.swift in Sources */,
 				E6674E3A2745035C006236C8 /* HomeTableViewHeader.swift in Sources */,
 				E680E3F3272A90C10076AA16 /* HighLightsViewController.swift in Sources */,
 				E661136D272CF60E009C2E55 /* SoccerNewsCell.swift in Sources */,
 				E680E406272AB4FB0076AA16 /* SoccerNew.swift in Sources */,
+				E6A9229A280A801700C79D79 /* SoccerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		E6740501280D469F00B4EF17 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E6740500280D469F00B4EF17 /* en */,
+				E6740502280D46C700B4EF17 /* zh-Hans */,
+				E6740505280D495C00B4EF17 /* zh-HK */,
+				E6740506280D496300B4EF17 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		E674050B280D506500B4EF17 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E674050A280D506500B4EF17 /* en */,
+				E674050C280D506900B4EF17 /* zh-HK */,
+				E674050D280D506D00B4EF17 /* zh-Hans */,
+				E674050E280D506F00B4EF17 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		E680E3E4272A8A960076AA16 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -383,6 +445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -430,7 +493,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -444,6 +507,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -485,7 +549,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
