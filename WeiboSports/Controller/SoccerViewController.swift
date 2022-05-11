@@ -26,6 +26,7 @@ class SoccerViewController: UIViewController ,UINavigationControllerDelegate {
     
     private var news: [NewData] = []
     private var isActive: Bool = false
+    private var link: String?
     
 // MARK: - lifecycles
     
@@ -74,9 +75,11 @@ class SoccerViewController: UIViewController ,UINavigationControllerDelegate {
     private func scrollToTop() {
         let topRow = IndexPath(row: 0,section: 0)
                                
-        self.homeTableView.scrollToRow(at: topRow,
-                                   at: .top,
-                                   animated: true)
+        if(!news.isEmpty){
+            self.homeTableView.scrollToRow(at: topRow,
+                                       at: .top,
+                                       animated: true)
+        }
     }
     
 }
@@ -84,30 +87,6 @@ class SoccerViewController: UIViewController ,UINavigationControllerDelegate {
  // MARK: - Extension
 
 extension SoccerViewController {
-//    func fetch() {
-//        isLoading = true
-//        self.showSpinner()
-//        URLSession.shared.request(
-//            url: BaseUrl.soccerNewsUrl,
-//            expecting: News.self)
-//        { [weak self] result in
-//            switch result {
-//            case .success(let news):
-//                    DispatchQueue.main.async {
-//                        self?.isLoading = false
-//                        self?.news = news.data
-//                        self?.isActive = news.isActive
-//
-//                        self?.removeSpinner()
-//                        self?.homeTableView.reloadData()
-//                    }
-//
-//            case .failure(let error):
-//                print(error)
-//                self?.isLoading = false
-//            }
-//        }
-//    }
     
     func fetch() {
         
@@ -115,9 +94,9 @@ extension SoccerViewController {
 
         switch(Locale.current.languageCode!){
             case "en":
-                switchBaseUrl(baseUrl: BaseUrl.soccerNewsUrl)
+                switchBaseUrl(baseUrl: BaseUrl.soccerNewsUrlEN)
             case "zh":
-                switchBaseUrl(baseUrl: BaseUrl.horseNewsUrl)
+                switchBaseUrl(baseUrl: BaseUrl.soccerNewsUrlZH)
             default:
                 print("none")
         }
@@ -136,6 +115,10 @@ extension SoccerViewController {
                         self?.isActive = news.isActive
                         self?.removeSpinner()
                         self?.homeTableView.reloadData()
+                        
+                        if let link = news.link {
+                            self?.link = link
+                        }
                     }
 
                 case .failure(let error):
@@ -243,6 +226,8 @@ extension SoccerViewController: UITableViewDataSource, UITableViewDelegate {
     func didTapCell(data: NewData) {
         let reusableVc = ReusableViewController()
         reusableVc.data = data
+        reusableVc.showAds = isActive
+        reusableVc.link = self.link
         navigationController?.present(reusableVc, animated: true)
         
     }

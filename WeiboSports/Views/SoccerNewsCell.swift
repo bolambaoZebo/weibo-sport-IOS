@@ -17,6 +17,7 @@ class SoccerNewsCell: UITableViewCell {
     var buttomStackView = UIStackView()
     
     let singleTap = UITapGestureRecognizer(target: self, action: "")
+    
     private let soccerImage: UIImageView = {
        let soccerImage = UIImageView()
         soccerImage.contentMode = .scaleAspectFill
@@ -24,6 +25,7 @@ class SoccerNewsCell: UITableViewCell {
 //        soccerImage.layer.cornerRadius = 5
         return soccerImage
     }()
+    
     //        let item = news[indexPath.row]
     //        let detailVC = NewsViewController(item)
     //        navigationController?.present(detailVC, animated: true)
@@ -32,7 +34,7 @@ class SoccerNewsCell: UITableViewCell {
         let label = ZeeUILabel(withInsets: 8, 8, 8, 8)
 //        label.textColor = .black
         label.font = .systemFont(ofSize: 18, weight: .semibold)
-        label.adjustsFontSizeToFitWidth = true
+//        label.adjustsFontSizeToFitWidth = true
         label.clipsToBounds = true
         label.numberOfLines = 2
         return label
@@ -116,9 +118,10 @@ class SoccerNewsCell: UITableViewCell {
     }
     
     func setSoccerNewCell(news: NewData) {
-        titleLabel.text = news.title
+        titleLabel.text = news.title.htmlDecoded
         descriptionLabel.text = convertDateFormat(inputDate: news.date)//news.description.htmlAttributedString()
         soccerImage.load(url: URL(string: news.imageUrl)!)
+        
     }
     
     func setImageConstraint() {

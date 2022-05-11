@@ -9,8 +9,6 @@
 		<string>zh_CN</string>
 		<string>zh_TW</string>
 	</array>
-	<key>CFBundleIdentifier</key>
-	<string></string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

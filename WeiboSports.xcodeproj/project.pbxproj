@@ -44,6 +44,11 @@
 		E6BD9934280950CD00AB7249 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BD9933280950CD00AB7249 /* String+Extension.swift */; };
 		E6BD9936280953F000AB7249 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BD9935280953F000AB7249 /* Date+Extension.swift */; };
 		E6BD993A28095CE300AB7249 /* ReusableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BD993928095CE300AB7249 /* ReusableViewController.swift */; };
+		E6BEB76E281256C800219716 /* WVData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BEB76D281256C800219716 /* WVData.swift */; };
+		E6CFF1602813982E00DC228C /* UIHeaderFooter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CFF15F2813982E00DC228C /* UIHeaderFooter+Extension.swift */; };
+		E6CFF16228139E8B00DC228C /* HeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CFF16128139E8B00DC228C /* HeaderModel.swift */; };
+		E6CFF1642813DC5300DC228C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CFF1632813DC5300DC228C /* UIView+Extension.swift */; };
+		E6CFF1662813F44800DC228C /* Character+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CFF1652813F44800DC228C /* Character+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +99,11 @@
 		E6BD9933280950CD00AB7249 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		E6BD9935280953F000AB7249 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		E6BD993928095CE300AB7249 /* ReusableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewController.swift; sourceTree = "<group>"; };
+		E6BEB76D281256C800219716 /* WVData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WVData.swift; sourceTree = "<group>"; };
+		E6CFF15F2813982E00DC228C /* UIHeaderFooter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIHeaderFooter+Extension.swift"; sourceTree = "<group>"; };
+		E6CFF16128139E8B00DC228C /* HeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderModel.swift; sourceTree = "<group>"; };
+		E6CFF1632813DC5300DC228C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		E6CFF1652813F44800DC228C /* Character+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +231,9 @@
 				E6BD9935280953F000AB7249 /* Date+Extension.swift */,
 				E6A9229D280AA7CE00C79D79 /* NSAttribureString+Extension.swift */,
 				E6B940DB280D0AC900B8F89B /* UIViewController+Extension.swift */,
+				E6CFF15F2813982E00DC228C /* UIHeaderFooter+Extension.swift */,
+				E6CFF1632813DC5300DC228C /* UIView+Extension.swift */,
+				E6CFF1652813F44800DC228C /* Character+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -238,6 +251,8 @@
 			children = (
 				E680E403272AB4EB0076AA16 /* SoccerVideo.swift */,
 				E680E405272AB4FB0076AA16 /* SoccerNew.swift */,
+				E6BEB76D281256C800219716 /* WVData.swift */,
+				E6CFF16128139E8B00DC228C /* HeaderModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -379,12 +394,15 @@
 				E6A9229C280A802500C79D79 /* HorseViewController.swift in Sources */,
 				E66302052748E04800BE0C95 /* BaseViewController.swift in Sources */,
 				E661136F272CFFEC009C2E55 /* UIImageViewExtensions.swift in Sources */,
+				E6CFF1642813DC5300DC228C /* UIView+Extension.swift in Sources */,
+				E6CFF16228139E8B00DC228C /* HeaderModel.swift in Sources */,
 				E6611375272D2404009C2E55 /* SoccerVideoCell.swift in Sources */,
 				E6BD9934280950CD00AB7249 /* String+Extension.swift in Sources */,
 				E680E3FC272AA16C0076AA16 /* UIViewControllerExtensions.swift in Sources */,
 				E6B940DC280D0AC900B8F89B /* UIViewController+Extension.swift in Sources */,
 				E6BD993A28095CE300AB7249 /* ReusableViewController.swift in Sources */,
 				E680E404272AB4EB0076AA16 /* SoccerVideo.swift in Sources */,
+				E6BEB76E281256C800219716 /* WVData.swift in Sources */,
 				E67DB10027463651009BFF27 /* ColorExtension.swift in Sources */,
 				E680E3EF272A8B600076AA16 /* HomeViewController.swift in Sources */,
 				E6611368272CF314009C2E55 /* BaseUrl.swift in Sources */,
@@ -393,8 +411,10 @@
 				E680E3DB272A8A940076AA16 /* MainTabViewController.swift in Sources */,
 				E680E3E1272A8A940076AA16 /* WeiboSports.xcdatamodeld in Sources */,
 				E680E3D7272A8A940076AA16 /* AppDelegate.swift in Sources */,
+				E6CFF1662813F44800DC228C /* Character+Extension.swift in Sources */,
 				E680E3F5272A90D70076AA16 /* StatsViewController.swift in Sources */,
 				E6A9229E280AA7CE00C79D79 /* NSAttribureString+Extension.swift in Sources */,
+				E6CFF1602813982E00DC228C /* UIHeaderFooter+Extension.swift in Sources */,
 				E680E3D9272A8A940076AA16 /* SceneDelegate.swift in Sources */,
 				E66302022748DE1800BE0C95 /* VideoViewController.swift in Sources */,
 				E6674E3A2745035C006236C8 /* HomeTableViewHeader.swift in Sources */,
@@ -565,8 +585,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = LMCC57R49Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeiboSports/Info.plist;
@@ -582,9 +603,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zebo.weibosports.WeiboSports;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "WeiboSports-AppStore";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -597,8 +619,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = LMCC57R49Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeiboSports/Info.plist;
@@ -614,9 +637,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zebo.weibosports.WeiboSports;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "WeiboSports-AppStore";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

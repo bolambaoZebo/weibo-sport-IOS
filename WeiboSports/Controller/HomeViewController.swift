@@ -9,6 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController ,UINavigationControllerDelegate {
     
+    
 //MARK: - Uiviews
     
     private let homeTableView: UITableView = {
@@ -25,6 +26,8 @@ class HomeViewController: UIViewController ,UINavigationControllerDelegate {
     
     private var news: [NewData] = []
     private var isActive: Bool = false
+    private var headerData : HeaderModel? = nil
+    private var link: String?
     
 // MARK: - lifecycles
     
@@ -55,6 +58,10 @@ class HomeViewController: UIViewController ,UINavigationControllerDelegate {
     @objc fileprivate func returnOrigin() {
             self.scrollToTop()
     }
+    
+    @objc fileprivate func privacyPolicy() {
+            UIApplication.shared.open(URL(string: "https://sites.google.com/view/weibosports/home")!)
+    }
 }
 
  // MARK: - Extension
@@ -64,20 +71,44 @@ extension HomeViewController {
     private func scrollToTop() {
         let topRow = IndexPath(row: 0,section: 0)
                                
-        self.homeTableView.scrollToRow(at: topRow,
-                                   at: .top,
-                                   animated: true)
+        if(!news.isEmpty){
+            self.homeTableView.scrollToRow(at: topRow,
+                                       at: .top,
+                                       animated: true)
+        }
+    }
+    
+    func fetchHeaderImages(baseUrl: URL!){
+            URLSession.shared.request(
+                url: baseUrl,
+                expecting: HeaderModel.self)
+            { [weak self] result in
+                switch result {
+                case .success(let header):
+
+                    print(header)
+                    DispatchQueue.main.async {
+                        self?.headerData = header
+                        self?.homeTableView.reloadData()
+                    }
+
+                case .failure(let error):
+                    print(error)
+                }
+            }
     }
     
     func fetch() {
         
         self.showSpinner()
 
+        fetchHeaderImages(baseUrl: BaseUrl.headerEndPoint)
+        
         switch(Locale.current.languageCode!){
             case "en":
-                switchBaseUrl(baseUrl: BaseUrl.allNewsUrl)
+                switchBaseUrl(baseUrl: BaseUrl.allNewsUrlEN)
             case "zh":
-                switchBaseUrl(baseUrl: BaseUrl.horseNewsUrl)
+                switchBaseUrl(baseUrl: BaseUrl.allNewsUrlZH)
             default:
                 print("none")
         }
@@ -96,6 +127,10 @@ extension HomeViewController {
                         self?.isActive = news.isActive
                         self?.removeSpinner()
                         self?.homeTableView.reloadData()
+                        
+                        if let link = news.link {
+                            self?.link = link
+                        }
                     }
 
                 case .failure(let error):
@@ -121,8 +156,15 @@ extension HomeViewController {
         buttonLanguage.setImage(UIImage(systemName: "arrow.up.square"), for: .normal)
         buttonLanguage.addTarget(self, action: #selector(returnOrigin), for: .touchUpInside)
         
+        let buttonPP = UIButton.init(type: .custom)
+        buttonPP.setImage(UIImage(systemName: "p.square"), for: .normal)
+        buttonPP.addTarget(self, action: #selector(privacyPolicy), for: .touchUpInside)
+        
+        
         let rightBarButton = UIBarButtonItem(customView: buttonLanguage)
+        let leftBarButton = UIBarButtonItem(customView: buttonPP)
         self.navigationItem.rightBarButtonItem = rightBarButton
+        self.navigationItem.leftBarButtonItem = leftBarButton
 //            .init(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(switchLanguage))
 //        navigationItem.rightBarButtonItems = [switchLanguage]
         
@@ -140,7 +182,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let newsCell = news[indexPath.row]
-        
         if(newsCell.category[0] != 4){
             cell.isSoccer = true
         }else {
@@ -169,8 +210,24 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 //        navigationController?.present(detailVC, animated: true)
 //    }
     
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header")
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? TableHeader else {
+            return UITableViewHeaderFooterView()
+        }
+        
+        if let data = headerData {
+            header.setHeaderImages(data: data)
+            if(isActive){
+                header.link = data.link
+            }else{
+                header.link = ""
+            }
+        }else {
+            let headerDefaut = HeaderModel(imageUrls: ["ads1","ads2","ads3","ads4"], link: "")
+            header.setHeaderImages(data: headerDefaut)
+        }
+        
         return header
     }
     
@@ -196,7 +253,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func didTapCell(data: NewData) {
         let reusableVc = ReusableViewController()
         reusableVc.data = data
+        reusableVc.showAds = isActive
         navigationController?.present(reusableVc, animated: true)
+        
+        if let linkToGo = self.link {
+            reusableVc.link = linkToGo
+        }
         
     }
     

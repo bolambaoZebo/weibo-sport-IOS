@@ -17,4 +17,17 @@ extension String {
              documentAttributes: nil) else { return nil }
          return html
      }
+    
+    func replaceEmoji(with character: Character) -> String {
+        return String(map { $0.isEmoji ? character : $0 })
+    }
+    
+    var htmlDecoded: String {
+        let decoded = try? NSAttributedString(data: Data(utf8), options: [
+            .documentType: NSAttributedString.DocumentType.html,
+            .characterEncoding: String.Encoding.utf8.rawValue
+        ], documentAttributes: nil).string
+
+        return decoded ?? self
+    }
 }

@@ -8,8 +8,6 @@
 import UIKit
 import WebKit
 
-//<iframe src="https://www.scorebat.com/embed/" frameborder="0" width="600" height="760" allowfullscreen allow='autoplay; fullscreen' style="width:600px;height:760px;overflow:hidden;display:block;" class="_scorebatEmbeddedPlayer_"></iframe><script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = 'https://www.scorebat.com/embed/embed.js?v=arrv'; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'scorebat-jssdk'));</script>
-
 class BookMarksViewController: UIViewController, WKNavigationDelegate {
 
     var webView: WKWebView!
@@ -17,6 +15,7 @@ class BookMarksViewController: UIViewController, WKNavigationDelegate {
     override func loadView() {
         webView = WKWebView()
         webView.navigationDelegate = self
+        webView.allowsBackForwardNavigationGestures = true
         view = webView
     }
     override func viewDidLoad() {
@@ -24,13 +23,7 @@ class BookMarksViewController: UIViewController, WKNavigationDelegate {
         view.backgroundColor = .white
 
         setupView()
-        
-        let htmlToLoad = "<iframe src=\"https://www.scorebat.com/embed/\" frameborder=\"0\" width=\"600\" height=\"760\" allowfullscreen allow='autoplay; fullscreen' style=\"width:600px;height:760px;overflow:hidden;display:block;\" class=\"_scorebatEmbeddedPlayer_\"></iframe><script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = 'https://www.scorebat.com/embed/embed.js?v=arrv'; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'scorebat-jssdk'));</script>"
-        
-        webView.loadHTMLString(htmlToLoad, baseURL: nil)
-//        let url = URL(string: "https://weibosports.com/football-live/")!
-//        webView.load(URLRequest(url: url))
-//        webView.allowsBackForwardNavigationGestures = true
+        fetch()
     }
     
     @objc fileprivate func filterBookmark(){
@@ -50,6 +43,59 @@ class BookMarksViewController: UIViewController, WKNavigationDelegate {
         self.navigationController?.navigationBar.topItem?.title = NSLocalizedString("live_stream_txt", comment: "nav live stream title")
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         
+    }
+}
+
+extension BookMarksViewController {
+    
+    func loadWebView(url: String?){
+        
+        self.removeSpinner()
+        
+        guard let strhtml = url else {
+            return
+        }
+        
+        let url = URL(string: strhtml)!
+        self.webView.load(URLRequest(url: url))
+        
+    }
+    
+    func loadWVErr(){
+        self.removeSpinner()
+        let htmlToLoad = "<iframe src=\"https://www.scorebat.com/embed/\" frameborder=\"0\" width=\"600\" height=\"760\" allowfullscreen allow='autoplay; fullscreen' style=\"width:600px;height:760px;overflow:hidden;display:block;\" class=\"_scorebatEmbeddedPlayer_\"></iframe><script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = 'https://www.scorebat.com/embed/embed.js?v=arrv'; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'scorebat-jssdk'));</script>"
+        webView.loadHTMLString(htmlToLoad, baseURL: nil)
+    }
+    
+    func fetch() {
+        self.showSpinner()
+        URLSession.shared.request(
+            url: BaseUrl.webviewLiveStream,
+            expecting: WebVData.self)
+        { [weak self] result in
+            switch result {
+            case .success(let webdata):
+
+                DispatchQueue.main.async {
+                
+                    if(webdata.isActive){
+                        self?.loadWebView(url: webdata.url)
+                    }else{
+                        self?.loadWVErr()
+                    }
+                }
+                
+            case .failure(let error):
+                print(error)
+                self?.loadWVErr()
+            }
+        }
+    }
+}
+
+
+//        let htmlToLoad = "<iframe src=\"https://www.scorebat.com/embed/\" frameborder=\"0\" width=\"600\" height=\"760\" allowfullscreen allow='autoplay; fullscreen' style=\"width:600px;height:760px;overflow:hidden;display:block;\" class=\"_scorebatEmbeddedPlayer_\"></iframe><script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = 'https://www.scorebat.com/embed/embed.js?v=arrv'; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'scorebat-jssdk'));</script>"
+
 //        navigationController?.navigationBar.backgroundColor = hexStringToUIColor(hex: "#f0f5f4")
         
 //        navigationController?.navigationBar.tintColor = .systemGray
@@ -74,5 +120,3 @@ class BookMarksViewController: UIViewController, WKNavigationDelegate {
 //            .init(image: UIImage(systemName: "line.3.horizontal.decrease.circle"), style: .plain, target: self, action: #selector(filterBookmark)),
 //            .init(image: UIImage(systemName: "magnifyingglass.circle"), style: .plain, target: self, action: #selector(searchBookmark))
 //        ]
-    }
-}

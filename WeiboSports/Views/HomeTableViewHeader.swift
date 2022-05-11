@@ -18,7 +18,6 @@ class SubclassUIcollectionViewCell: UICollectionViewCell {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "icon soccer")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleToFill
@@ -31,7 +30,8 @@ class SubclassUIcollectionViewCell: UICollectionViewCell {
     }
     
     func setupCellImage(imagezName: String) {
-        self.imageView.image = UIImage(named: "\(imagezName)")
+//        self.imageView.image = UIImage(named: "\(imagezName)")
+        self.imageView.load(url: URL(string: imagezName)!)
     }
     
     override func layoutSubviews() {
@@ -48,14 +48,19 @@ class SubclassUIcollectionViewCell: UICollectionViewCell {
 }
 
 extension TableHeader: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        imageNamez.count
+        
+        (imageNamez!.count <= 0) ? 0 : imageNamez!.count-1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? SubclassUIcollectionViewCell {
             
-            cell.setupCellImage(imagezName: imageNamez[indexPath.row])
+            let itemIndex = (indexPath.row <= 0) ? 0 : indexPath.row - 1
+
+            cell.setupCellImage(imagezName: imageNamez![itemIndex])
+            
             return cell
         }
         fatalError("Unable to dequeue subclass cell")
@@ -76,13 +81,37 @@ extension TableHeader: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let urlLink = link else {
+            return
+        }
+        
+        if let url = URL(string: urlLink) {
+            UIApplication.shared.open(url)
+        }
+    }
     
+    func setHeaderImages(data: HeaderModel){
+        self.imageNamez = data.imageUrls
+        self.pageControl.numberOfPages = data.imageUrls.count
+        
+    }
+    
+    
+    
+}
+
+protocol TableHeaderDelegate {
+    func gotoLink(url: String?)
 }
 class TableHeader: UITableViewHeaderFooterView{
     
     static let identifier = "TableHeader"
     
-    let imageNamez = ["ads1","ads2","ads3","ads4"]
+    var delegate: TableHeaderDelegate?
+    var imageNamez : [String]?
+    var link: String?
     //    private let imageView: UIImageView = {
     //        let imageView = UIImageView()
     //        imageView.contentMode = .scaleAspectFit
@@ -118,7 +147,7 @@ class TableHeader: UITableViewHeaderFooterView{
     private lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.currentPage = 0
-        pc.numberOfPages = imageNamez.count
+        pc.numberOfPages = imageNamez?.count ?? 0
         pc.isUserInteractionEnabled = false
         //        let pinkColor = UIColor(red: 232/255, green: 68/255, blue: 133/255, alpha: 1)
         pc.currentPageIndicatorTintColor = .mainPink
@@ -175,6 +204,7 @@ class TableHeader: UITableViewHeaderFooterView{
         collectionView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 8).isActive = true
         collectionView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: pageControl.topAnchor, constant: -2).isActive = true
+        
         
         pageControl.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         pageControl.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true

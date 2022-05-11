@@ -14,12 +14,13 @@ class StatsViewController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
     
-    private var news: [NewData] = []
+//    private var news: WebVData?
     private var isActive: Bool = false
     
     override func loadView() {
         webView = WKWebView()
         webView.navigationDelegate = self
+        webView.allowsBackForwardNavigationGestures = true
         view = webView
     }
 
@@ -27,9 +28,7 @@ class StatsViewController: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
         setupView()
         
-        let url = URL(string: "https://www.scorebat.com/embed/livescore/")!
-        webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
+        fetch()
     }
     
     private func setupView() {
@@ -46,24 +45,41 @@ class StatsViewController: UIViewController, WKNavigationDelegate {
     //MARK: - API CALL
 
 extension StatsViewController {
+    
+    func loadWebView(url: String?){
+        self.removeSpinner()
+//        let url = URL(string: "https://www.scorebat.com/embed/livescore/")!
+        guard let data = url else{
+            return
+        }
+        let url = URL(string: data)!
+        self.webView.load(URLRequest(url: url))
+        self.webView.allowsBackForwardNavigationGestures = true
+    }
+    
+    func loadWVErr(){
+        self.removeSpinner()
+        let url = URL(string: "https://www.scorebat.com/embed/livescore/")!
+        self.webView.load(URLRequest(url: url))
+    }
     func fetch() {
         self.showSpinner()
         URLSession.shared.request(
-            url: BaseUrl.allNewsUrl,
-            expecting: News.self)
+            url: BaseUrl.webviewLiveScore,
+            expecting: WebVData.self)
         { [weak self] result in
             switch result {
-            case .success(let news):
-
+            case .success(let webdata):
                 DispatchQueue.main.async {
-                    self?.news = news.data
-                    self?.isActive = news.isActive
-                    self?.removeSpinner()
-//                    self?.homeTableView.reloadData()
+                    if(webdata.isActive){
+                        self?.loadWebView(url: webdata.url)
+                    }else{
+                        self?.loadWVErr()
+                    }
                 }
-                
             case .failure(let error):
                 print(error)
+                self?.loadWVErr()
             }
         }
     }

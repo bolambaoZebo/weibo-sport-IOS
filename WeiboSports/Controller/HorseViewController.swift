@@ -29,6 +29,7 @@ class HorseViewController: UIViewController ,UINavigationControllerDelegate {
     
     private var news: [NewData] = []
     private var isActive: Bool = false
+    private var link: String?
     
 // MARK: - lifecycles
     
@@ -89,9 +90,9 @@ extension HorseViewController {
 
         switch(Locale.current.languageCode!){
             case "en":
-                switchBaseUrl(baseUrl: BaseUrl.horseNewsUrl)
+                switchBaseUrl(baseUrl: BaseUrl.horseNewsUrlEN)
             case "zh":
-                switchBaseUrl(baseUrl: BaseUrl.horseNewsUrl)
+                switchBaseUrl(baseUrl: BaseUrl.horseNewsUrlZH)
             default:
                 print("none")
         }
@@ -110,6 +111,10 @@ extension HorseViewController {
                         self?.isActive = news.isActive
                         self?.removeSpinner()
                         self?.homeTableView.reloadData()
+                        
+                        if let link = news.link {
+                            self?.link = link
+                        }
                     }
 
                 case .failure(let error):
@@ -237,6 +242,8 @@ extension HorseViewController: UITableViewDataSource, UITableViewDelegate {
     func didTapCell(data: NewData) {
         let reusableVc = ReusableViewController()
         reusableVc.data = data
+        reusableVc.showAds = isActive
+        reusableVc.link = self.link
         navigationController?.present(reusableVc, animated: true)
         
     }

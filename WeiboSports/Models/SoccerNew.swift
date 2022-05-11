@@ -41,4 +41,5 @@ struct NewData: Codable {
 struct News: Codable {
     let isActive: Bool
     let data: [NewData]
+    let link: String?
 }
